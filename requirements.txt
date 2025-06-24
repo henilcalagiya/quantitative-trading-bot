@@ -1,0 +1,53 @@
+# Quantitative Trading Bot - Requirements
+# Core trading and data processing libraries
+
+# Fyers API for Indian market trading
+fyers-apiv3>=2.0.0
+
+# NSE Python library for Indian market data
+nsepython>=1.0.0
+
+# Kite Connect for Zerodha trading
+kiteconnect>=5.0.0
+
+# Data processing and analysis
+pandas>=1.5.0
+numpy>=1.21.0
+
+# HTTP requests and API calls
+requests>=2.28.0
+
+# Web automation for token generation
+selenium>=4.0.0
+webdriver-manager>=3.8.0
+
+# Two-factor authentication
+pyotp>=2.8.0
+
+# Timezone handling
+pytz>=2022.1
+
+# Date and time utilities
+python-dateutil>=2.8.0
+
+# Task scheduling
+schedule>=1.2.0
+
+# Optional: Jupyter notebook support
+jupyter>=1.0.0
+ipykernel>=6.0.0
+
+# Optional: Data visualization (if needed)
+matplotlib>=3.5.0
+seaborn>=0.11.0
+
+# Optional: Advanced data analysis
+scipy>=1.9.0
+
+# Development and testing (optional)
+pytest>=7.0.0
+black>=22.0.0
+flake8>=5.0.0
+
+# Environment management (optional)
+python-dotenv>=0.19.0 

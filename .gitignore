@@ -1,0 +1,44 @@
+# Credentials and tokens
+credentials.py
+access_token.txt
+upstox_access_token.txt
+auth_code.txt
+
+# Data files (large and frequently changing)
+data/
+logs/
+
+# Large market data files (can be regenerated)
+NSE.json
+_market_status.csv
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Jupyter notebooks
+*.ipynb_checkpoints/
+
+# Environment files
+.env
+.venv/
+env/
+venv/
+
+# Temporary files
+*.tmp
+*.temp 
