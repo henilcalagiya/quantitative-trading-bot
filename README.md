@@ -71,6 +71,82 @@ Quantitative Trading Bot/
 └── README.md                   # This file
 ```
 
+## System Flow Architecture
+
+### High-Level Data Flow
+```
+Market Data Sources (NSE/Fyers API)
+    ↓ Real-time WebSocket connections
+Fyers WebSocket Data Feed (1fetch_tick_data_live.py)
+    ↓ Tick data streaming
+Real-time Tick Data Processing (functions.py)
+    ↓ Data insertion
+SQLite Databases (data/tick_data/tickdata_DDMMMYY.db)
+    ↓ 5-second aggregation
+OHLC Candle Generation (process_function.py)
+    ↓ Technical indicators calculation
+Technical Analysis Engine
+    ├── Heiken Ashi Candles
+    ├── Supertrend Indicator
+    ├── ATR (Average True Range)
+    └── Direction Signals
+    ↓ Signal processing
+Trading Decision Engine (process_live_data.py)
+    ↓ Trade execution logic
+Broker Integration Layer
+    ├── Zerodha Kite API (kite_trade.py)
+    ├── Upstox API (upstox_functions.py)
+    └── Fyers API (functions.py)
+    ↓ Order placement
+Order Management System
+    ↓ Position tracking
+Active Position Monitoring
+    ↓ Trade logging
+Trade Logs (data/trade_logs/DDMMMYY_Trades.txt)
+    ↓ Performance tracking
+Session Storage + JSON Files
+    ├── NSE.json (symbol data)
+    ├── dictionaries.py (mappings)
+    └── credentials.py (API keys)
+```
+
+### Detailed Component Flow
+
+#### 1. **Data Collection Layer**
+```
+Fyers WebSocket → Real-time Tick Data → SQLite Storage
+    ↓
+NSE Python Library → Expiry Dates → Symbol Generation
+    ↓
+Market Status Check → Trading Hours Validation
+```
+
+#### 2. **Data Processing Pipeline**
+```
+Raw Tick Data → 5-second OHLC Candles → Heiken Ashi Conversion
+    ↓
+Technical Indicators → Supertrend Calculation → Direction Signals
+    ↓
+Signal Validation → Strike Price Selection → Trade Decision
+```
+
+#### 3. **Trading Execution Flow**
+```
+Buy Signal Detection → Position Exit (if any) → New Position Entry
+    ↓
+Broker API Call → Order Placement → Position Tracking
+    ↓
+Real-time Monitoring → Exit Signal Detection → Position Closure
+```
+
+#### 4. **Data Persistence Architecture**
+```
+Session Data → SQLite Databases → Daily Partitioning
+    ├── Tick Data: tickdata_DDMMMYY.db
+    ├── Candle Data: candledata_DDMMMYY.db
+    └── Trade Logs: DDMMMYY_Trades.txt
+```
+
 ## Features
 
 - **Real-time trading** of BANKNIFTY CE and PE options
