@@ -1,4 +1,4 @@
-# Quantitative Trading Bot
+# QuantBot - High-Frequency Options Trading System
 
 An automated algorithmic trading system for BANKNIFTY index options on the Indian stock market.
 
